@@ -7,11 +7,11 @@ text = extract_text("example2.pdf")
 
 # Regex referente ao formato do CPF
 pattern = re.compile(r'\d{3}\.\d{3}\.\d{3}-\d{2}')
-matches = pattern.findall(text)
+cpfs = pattern.findall(text)
 
 # Usando a biblioteca aspose.pdf para ler o PDF e fazer a substituição
 first_loop = True
-for match in matches:
+for cpf in cpfs:
     # Documento PDF é aberto
     # Condição criada para atualizar o documento a cada loop
     if(first_loop):
@@ -21,9 +21,10 @@ for match in matches:
         inputPDFFile = pdf.Document("output.pdf") 
 
     # Objeto TextFragmentAbsorber é instanciado
-    txtAbsorber = pdf.text.TextFragmentAbsorber(match)
+    txtAbsorber = pdf.text.TextFragmentAbsorber(cpf)
 
     # Procura texto no documento PDF (não sei que comentário utilizar aqui)
+    # A função "accept" recebe o objeto "txtAbsorber" como parâmetro, o qual retorna uma coleção de objetos "TextFragment".
     inputPDFFile.pages.accept(txtAbsorber)
 
     # Obtém uma referência à lista de fragmentos de texto encontrados

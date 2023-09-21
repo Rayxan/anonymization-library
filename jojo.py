@@ -8,8 +8,8 @@ import re
 inputPDFFile = pdf.Document("example2.pdf")
 
 # Instantiate a TextFragmentAbsorber object
-reg = re.compile(r'\d{3}\.\d{3}\.\d{3}-\d{2}')
-txtAbsorber = pdf.text.TextFragmentAbsorber(reg)
+# reg = re.compile(r'\d{3}\.\d{3}\.\d{3}-\d{2}')
+txtAbsorber = pdf.text.TextFragmentAbsorber("marco")
 
 # Search text
 inputPDFFile.pages.accept(txtAbsorber)

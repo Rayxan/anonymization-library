@@ -1,6 +1,6 @@
 import aspose.pdf as pdf
-import re
 from pdfminer.high_level import extract_text
+from regexDadosPessoais import RegexDadosPessoais 
 
 class AnonimizadorCPF:
     def __init__(self):
@@ -11,7 +11,7 @@ class AnonimizadorCPF:
         text = extract_text(arquivo)
 
         # Regex referente ao formato do CPF
-        pattern = re.compile(r'\d{3}\.\d{3}\.\d{3}-\d{2}')
+        pattern = RegexDadosPessoais.regexCPF
         cpfs = pattern.findall(text)
         self.cpfs.extend(cpfs)
 

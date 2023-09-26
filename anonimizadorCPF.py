@@ -26,11 +26,8 @@ class AnonimizadorCPF:
         for cpf in self.cpfs:
             # Documento PDF é aberto
             # Condição criada para atualizar o documento a cada loop
-            if(primeiro_loop):
-                inputPDFFile = pdf.Document(arquivo)
-                primeiro_loop = False
-            else:
-                inputPDFFile = pdf.Document("arquivoAnonimizado.pdf") 
+            
+            inputPDFFile = pdf.Document(arquivo) 
 
             # Objeto TextFragmentAbsorber é instanciado
             txtAbsorber = pdf.text.TextFragmentAbsorber(cpf)
@@ -48,7 +45,7 @@ class AnonimizadorCPF:
                 txtFragment.text = "###.###.###-##"
 
             # Salva em um novo pdf
-            inputPDFFile.save("arquivoAnonimizado.pdf")
+            inputPDFFile.save(arquivo)
 
             contadorCpf += 1
             if contadorCpf == total_cpfs:

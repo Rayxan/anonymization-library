@@ -13,11 +13,15 @@ class AnonimizadorCPF:
         # Regex referente ao formato do CPF
         pattern = RegexDadosPessoais.regexCPF
         cpfs = pattern.findall(text)
-        self.cpfs.extend(cpfs)
+        
+        return self.cpfs.extend(cpfs)
 
-        self.substituir_cpf_pdf(arquivo)
+        # self.substituir_cpf_pdf(arquivo)
 
     def substituir_cpf_pdf(self, arquivo):
+
+        extrair_cpf_pdf(arquivo)
+
         # Usando a biblioteca aspose.pdf para ler o PDF e fazer a substituição
         primeiro_loop = True
         contadorCpf = 0

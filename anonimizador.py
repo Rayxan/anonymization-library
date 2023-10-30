@@ -1,8 +1,9 @@
 import aspose.pdf as pdf
+import re
 from pdfminer.high_level import extract_text
 from regexDadosPessoais import RegexDadosPessoais 
 
-class AnonimizadorCPF:
+class Anonimizador:
     def __init__(self):
         self.dados = []
 
@@ -23,7 +24,6 @@ class AnonimizadorCPF:
             pattern = RegexDadosPessoais.regexEmail
         
         dados = pattern.findall(text)
-        print(dados)
         self.dados.extend(dados)
 
         self.substituir_pdf(arquivo)
@@ -59,4 +59,4 @@ class AnonimizadorCPF:
 
 teste = input()
 
-AnonimizadorCPF().anonimiza_pdf("exemplo.pdf", teste)
+Anonimizador().anonimiza_pdf("teste1.pdf", teste)

@@ -52,4 +52,4 @@ class Anonimizador:
 
 teste = input()
 
-Anonimizador().anonimiza_docx("CV.docx", teste)
+Anonimizador().anonimiza_docx("teste.docx", teste)

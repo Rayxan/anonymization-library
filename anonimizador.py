@@ -1,4 +1,3 @@
-import aspose.pdf as pdf
 import re
 from pdfminer.high_level import extract_text
 from regexDadosPessoais import RegexDadosPessoais 
@@ -7,56 +6,30 @@ class Anonimizador:
     def __init__(self):
         self.dados = []
 
-    def anonimiza_pdf(self, arquivo, flag):
-        # Usando a biblioteca pdfminer para ler e extrair dados do PDF
+    def anonimiza_texto(self, arquivo, flag):
+        # extraindo o texto do arquivo pdf passado
         text = extract_text(arquivo)
 
         # Regex referente ao formato do dado escolhido
-        if flag == '1':
+        if flag == 'CPF':
             pattern = RegexDadosPessoais.regexCPF
-        elif flag == '2':
+        elif flag == 'Telefone':
             pattern = RegexDadosPessoais.regexTelef
-        elif flag == '3':
+        elif flag == 'Data':
             pattern = RegexDadosPessoais.regexData
-        elif flag == '4':
+        elif flag == 'CEP':
             pattern = RegexDadosPessoais.regexCEP
-        elif flag == '5':
+        elif flag == 'Email':
             pattern = RegexDadosPessoais.regexEmail
         
-        dados = pattern.findall(text)
-        self.dados.extend(dados)
+        text =  re.sub(pattern, '#########', text)
 
-        self.substituir_pdf(arquivo)
-
-    def substituir_pdf(self, arquivo):
-        # Usando a biblioteca aspose.pdf para ler o PDF e fazer a substituição
-
-        for dado in self.dados:
-            # Documento PDF é aberto
-            # Condição criada para atualizar o documento a cada loop
-            
-            inputPDFFile = pdf.Document(arquivo) 
-
-            # Objeto TextFragmentAbsorber é instanciado
-            txtAbsorber = pdf.text.TextFragmentAbsorber(dado)
-            
-            # Procura texto no documento PDF (não sei que comentário utilizar aqui)
-            # A função "accept" recebe o objeto "txtAbsorber" como parâmetro, o qual retorna uma coleção de objetos "TextFragment".
-            inputPDFFile.pages.accept(txtAbsorber)
-
-            # Obtém uma referência à lista de fragmentos de texto encontrados
-            textFragmentCollection = txtAbsorber.text_fragments
-
-            # Analisa todos os fragmentos de texto encontrados
-            for txtFragment in textFragmentCollection:
-                # Substitui o texto encontrado
-                txtFragment.text = "###########"
-
-            # Salva em um novo pdf
-            inputPDFFile.save(arquivo)
+        return text
         
 # Criando uma instância da classe e chamando métodos
 
 teste = input()
 
-Anonimizador().anonimiza_pdf("teste1.pdf", teste)
+texto = Anonimizador().anonimiza_texto("exemplo.pdf", teste)
+
+print(texto)

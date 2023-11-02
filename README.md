@@ -1,0 +1,1 @@
+# Biblioteca para auxiliar na anonimização de dados pessoais brasileiros.

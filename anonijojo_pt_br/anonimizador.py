@@ -1,6 +1,5 @@
 import re
 from pdfminer.high_level import extract_text
-from docx import Document
 import docx2txt
 from regexDadosPessoais import RegexDadosPessoais 
 
@@ -38,16 +37,6 @@ class Anonimizador:
         text =  re.sub(pattern, '#########', text)
 
         return text
-    
-    def anonimiza_docx(self, arquivo, flag):
-        document = Document(arquivo)
-
-        # Regex referente ao formato do dado escolhido
-        pattern = self.retorna_pattern(flag)
-        
-        for paragraph in document.paragraphs:
-            paragraph.text = re.sub(pattern, '#########', paragraph.text)
-        document.save(arquivo)
     
     def anonimiza_docx2txt(self, arquivo, flag):
         # Regex referente ao formato do dado escolhido

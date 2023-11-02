@@ -1,7 +1,6 @@
 import re
 from pdfminer.high_level import extract_text
 import docx2txt
-from regexDadosPessoais import RegexDadosPessoais 
 
 class Anonimizador:
     def __init__(self):
@@ -9,15 +8,8 @@ class Anonimizador:
 
     def retorna_pattern(self, flag):
         if flag == 'CPF':
-            return  RegexDadosPessoais.regexCPF
-        elif flag == 'Telefone':
-            return RegexDadosPessoais.regexTelef
-        elif flag == 'Data':
-            return RegexDadosPessoais.regexData
-        elif flag == 'CEP':
-            return RegexDadosPessoais.regexCEP
-        elif flag == 'Email':
-            return RegexDadosPessoais.regexEmail
+            regexCPF = re.compile(r'(?<!\d)\d{3}\.\d{3}\.\d{3}-\d{2}(?!\d)')
+            return regexCPF
 
     def anonimiza_pdf(self, arquivo, flag):
         # extraindo o texto do arquivo pdf passado
@@ -48,10 +40,3 @@ class Anonimizador:
         text = re.sub(pattern, '#########', text)
 
         return text
-        
-        
-# Criando uma instância da classe e chamando métodos
-
-teste = input()
-
-print(Anonimizador().anonimiza_docx2txt("exemplo.docx", teste))

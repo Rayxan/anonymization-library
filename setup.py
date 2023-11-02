@@ -3,7 +3,7 @@ from setuptools import setup
 with open("README.md", "r") as arq:
     readme = arq.read()
 
-setup(name='anonijojo-pt-br',
+setup(name='cansei',
     version='0.0.1',
     license='MIT License',
     author='Raylan Sales and Stefano Luppi',
@@ -12,5 +12,5 @@ setup(name='anonijojo-pt-br',
     author_email='raylanwork@gmail.com',
     keywords='anonimizador pt-br',
     description=u'Anonimizador pt-br',
-    packages=['anonijojo_pt_br'],
+    packages=['cansei'],
     install_requires=['docx2txt==0.8', 'pdfminer.six==20221105'],)

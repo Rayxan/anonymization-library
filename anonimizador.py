@@ -1,7 +1,8 @@
 import re
 from pdfminer.high_level import extract_text
 from docx import Document
-from regexDadosPessoais import RegexDadosPessoais 
+from regexDadosPessoais import RegexDadosPessoais
+import pandas as pd
 
 class Anonimizador:
     def __init__(self):
@@ -47,9 +48,21 @@ class Anonimizador:
         for paragraph in document.paragraphs:
             paragraph.text = re.sub(pattern, '#########', paragraph.text)
         document.save(arquivo)
+    
+    def anonimiza_xlsx(self, arquivo, flag):
+
+        pattern = self.retorna_pattern(flag)
+        text = pd.read_excel(arquivo)
+        text = text.apply(lambda x: x if x.dtype != 'object' else x.str.replace(pattern,'#########', regex=True))
+        text.to_excel(arquivo, index=False)
+
+        print(text)
+
+
+        
         
 # Criando uma instância da classe e chamando métodos
 
 teste = input()
 
-Anonimizador().anonimiza_docx("teste.docx", teste)
+Anonimizador().anonimiza_xlsx("teste.xlsx", teste)

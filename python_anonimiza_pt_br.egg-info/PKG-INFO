@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: python-anonimiza-pt-br
+Version: 0.0.1
+Summary: Anonimizador pt-br
+Author: Raylan Sales and Stefano Luppi
+Author-email: raylanwork@gmail.com
+License: MIT License
+Keywords: anonimizador pt-br
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: docx2txt==0.8
+Requires-Dist: pdfminer.six==20221105
+
+# Biblioteca para auxiliar na anonimizaÃ§Ã£o de dados pessoais brasileiros.

@@ -1,0 +1,10 @@
+LICENSE
+README.md
+setup.py
+python_anonimiza_pt_br/__init__.py
+python_anonimiza_pt_br/anonimizador.py
+python_anonimiza_pt_br.egg-info/PKG-INFO
+python_anonimiza_pt_br.egg-info/SOURCES.txt
+python_anonimiza_pt_br.egg-info/dependency_links.txt
+python_anonimiza_pt_br.egg-info/requires.txt
+python_anonimiza_pt_br.egg-info/top_level.txt

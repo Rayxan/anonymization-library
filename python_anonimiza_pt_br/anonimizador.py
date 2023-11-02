@@ -10,6 +10,18 @@ class Anonimizador:
         if flag == 'CPF':
             regexCPF = re.compile(r'(?<!\d)\d{3}\.\d{3}\.\d{3}-\d{2}(?!\d)')
             return regexCPF
+        elif flag == 'Telefone':
+            regexTelef = re.compile(r'(?<!\d)\(\d{2}\)[ ]*\d{5}\-\d{4}(?!\d)')
+            return regexTelef
+        elif flag == 'Data':
+            regexData = re.compile(r'(?<!\d)\d{2}/\d{2}/\d{4}(?!\d)')
+            return regexData
+        elif flag == 'CEP':
+            regexCEP = re.compile(r'(?<!\d)\d{5}\-\d{3}(?!\d)')
+            return regexCEP
+        elif flag == 'Email':
+            regexEmail = re.compile(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}')
+            return regexEmail
 
     def anonimiza_pdf(self, arquivo, flag):
         # extraindo o texto do arquivo pdf passado

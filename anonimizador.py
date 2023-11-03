@@ -56,8 +56,6 @@ class Anonimizador:
         text = text.apply(lambda x: x if x.dtype != 'object' else x.str.replace(pattern,'#########', regex=True))
         text.to_excel(arquivo, index=False)
 
-        print(text)
-
 
         
         

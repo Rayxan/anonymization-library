@@ -19,6 +19,8 @@ class Anonimizador:
             return RegexDadosPessoais.regexCEP
         elif flag == 'Email':
             return RegexDadosPessoais.regexEmail
+        else:
+            return re.compile(flag)
 
     def anonimiza_pdf(self, arquivo, flag):
         # extraindo o texto do arquivo pdf passado
@@ -58,9 +60,3 @@ class Anonimizador:
 
 
         
-        
-# Criando uma instância da classe e chamando métodos
-
-teste = input()
-
-Anonimizador().anonimiza_xlsx("teste.xlsx", teste)

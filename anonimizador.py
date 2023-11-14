@@ -20,6 +20,8 @@ class Anonimizador:
             return RegexDadosPessoais.regexCEP
         elif flag == 'Email':
             return RegexDadosPessoais.regexEmail
+        else:
+            return re.compile(flag)
 
     def anonimiza_pdf(self, arquivo, flag):
         # extraindo o texto do arquivo pdf passado
@@ -67,9 +69,3 @@ class Anonimizador:
         text = pd.read_excel(arquivo)
         text = text.apply(lambda x: x if x.dtype != 'object' else x.str.replace(pattern,'#########', regex=True))
         text.to_excel(arquivo, index=False)
-
-# Criando uma instância da classe e chamando métodos
-
-teste = input()
-
-print(Anonimizador().anonimiza_docx2txt("exemplo.docx", teste))
